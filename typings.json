@@ -3,5 +3,8 @@
   "main": "lib/thinky.d.ts",
   "dependencies": {
     "rethinkdbdash": "github:ExoZoneDev/typings-rethinkdbdash#6bbd0fa51c289a41b2eee5d8dc29c1a5db85a96d"
+  },
+  "ambientDependencies": {
+    "bluebird": "registry:dt/bluebird#2.0.0+20160319051630"
   }
 }

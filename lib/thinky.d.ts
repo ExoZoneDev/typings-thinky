@@ -1,4 +1,5 @@
-import {Term} from "rethinkdbdash";
+import * as RethinkDBDash from "rethinkdbdash";
+import * as Promise from "bluebird";
 
 export interface ThinkyStatic {
   new (options?: ThinkyOpts): ThinkyInstance;
@@ -16,7 +17,7 @@ export interface ThinkyInstance {
   /**
    * The thinky object keeps a reference to the driver in the property r.
    */
-  r: Term;
+  r: RethinkDBDash.Term;
   /**
    * Thinky types.
    */
@@ -75,7 +76,7 @@ export interface ThinkyOpts {
   /**
    * An instance of rethinkdbdash
    */
-  r?: RethinkDBDash.DashInstance;
+  r?: RethinkDBDash;
 }
 
 export interface ModelSchema {
