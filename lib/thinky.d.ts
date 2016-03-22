@@ -80,7 +80,7 @@ export interface ThinkyOpts {
 }
 
 export interface ModelSchema {
-  [key: string]: any; // TODO: This needs to return the correct Typing.
+  [key: string]: TypesDefaults | ModelSchema;
 }
 
 export interface ModelSchemaOptions {
@@ -162,7 +162,7 @@ export interface Types {
   /**
    * For any type. No validation will be performed on this field.
    */
-  any();
+  any(): TypesDefaults;
 }
 
 export interface TypeString extends TypesDefaults {
@@ -380,5 +380,5 @@ export interface Document {
    *  - "saved": once a document is saved
    *  - "deleted": once a document is deleted
    */
-  on(event: string, cb: (data: any) => any): Promise<any>;
+  on(event: "saving" | "saved" | "deleted", cb: (data: any) => any): Promise<any>;
 }
