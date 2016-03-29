@@ -1,11 +1,7 @@
 import * as RethinkDBDash from "rethinkdbdash";
 import * as Promise from "bluebird";
 
-export interface ThinkyStatic {
-  new (options?: ThinkyOpts): ThinkyInstance;
-}
-
-export interface ThinkyInstance {
+export interface Thinky {
   /**
    * Return the current options used.
    */
