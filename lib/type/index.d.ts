@@ -9,9 +9,11 @@ import {TypeString} from "./string";
 // TODO: Add point / virtual
 
 export interface Type {
-  any: TypeAny;
-  array: TypeArray;
-  boolean: TypeBoolean;
-  string: TypeString;
-  date: TypeDate;
+  any(): TypeAny;
+  array(): TypeArray;
+  boolean(): TypeBoolean;
+  date(): TypeDate;
+  number(): TypeNumber;
+  object(): TypeObject;
+  string(): TypeString;
 }
