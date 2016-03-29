@@ -76,7 +76,7 @@ export interface ThinkyOpts {
   /**
    * An instance of rethinkdbdash
    */
-  r?: RethinkDBDash;
+  r?: RethinkDBDash.Term;
 }
 
 export interface ModelSchema {
