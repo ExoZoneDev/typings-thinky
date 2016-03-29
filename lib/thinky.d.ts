@@ -2,7 +2,7 @@ import * as RethinkDBDash from "rethinkdbdash";
 
 import {Model} from "./model";
 import {ThinkyErrors} from "./errors";
-import {Type} from "./type/";
+import {Type} from "./type/index";
 
 interface ThinkyStatic {
   (opts: ThinkyOpts): Thinky.Thinky; 
