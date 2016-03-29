@@ -387,4 +387,4 @@ declare namespace Thinky {
   }
 }
 
-export = connect;
+export = Thinky;
