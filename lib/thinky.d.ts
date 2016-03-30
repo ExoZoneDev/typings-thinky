@@ -4,33 +4,31 @@ import {Model} from "./model";
 import {ThinkyErrors} from "./errors";
 import {Type} from "./type/index";
 
-interface ThinkyStatic {
-  (opts: ThinkyOpts): Thinky.Thinky; 
+interface ThinkyInstance {
+  (opts: ThinkyOpts): Thinky; 
 }
 
-declare namespace Thinky {
-  class Thinky {
-    /**
-     * Return the current options used.
-     */
-    getOptions(): ThinkyOpts;
-    /**
-     * Create a model.
-     */
-    createModel(name: string, schema: ModelSchema, options?: ModelSchemaOptions): Model;
-    /**
-     * The thinky object keeps a reference to the driver in the property r.
-     */
-    r: RethinkDBDash.Term;
-    /**
-     * Thinky types.
-     */
-    type: Type;
-    /**
-     * Thinky errors.
-     */
-    Errors: ThinkyErrors;
-  }
+declare class Thinky {
+  /**
+   * Return the current options used.
+   */
+  getOptions(): ThinkyOpts;
+  /**
+   * Create a model.
+   */
+  createModel(name: string, schema: ModelSchema, options?: ModelSchemaOptions): Model;
+  /**
+   * The thinky object keeps a reference to the driver in the property r.
+   */
+  r: RethinkDBDash.Term;
+  /**
+   * Thinky types.
+   */
+  type: Type;
+  /**
+   * Thinky errors.
+   */
+  Errors: ThinkyErrors;
 }
 
 interface ThinkyOpts {
@@ -107,4 +105,4 @@ interface ModelSchemaOptions {
   validator?: () => any;
 }
 
-export = ThinkyStatic;
+export = ThinkyInstance;

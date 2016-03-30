@@ -1,10 +1,15 @@
 import {Document} from "./document";
+import {Query} from "./query";
 
 export class Model {
   /**
    * Create a new instance of the model and get back a document.
    */
   new (...args): Document; // TODO: Schema needs working on. (Args)
+  /**
+   * Return the options of the model -- call from an instance of Model
+   */
+  getOptions(): IModelOptions;
   /**
    * Return the name of the table used for this model.
    */
@@ -43,13 +48,40 @@ export class Model {
    */
   pre(event: string, hook: (next: () => any) => any): void;
   /**
-   * Add a hook that will be execcuted just after an event. The available post-hooks are save, delete, validate, init, retrieve.
+   * Add a hook that will be executed just after an event. The available post-hooks are save, delete, validate, init, retrieve.
    */
   post(event: string, hook: (next: () => any) => any): void;
   /**
    * Insert documents in the database. If an array of documents is provided, thinky will execute a batch insert with only one insert command.
    * The object options can be the options provided to insert, that is to say {conflict: 'error'/'replace'/'update'}.
    */
-  save(data: {}, options?: {conflict: string}): Promise<any>;
-  save(data: {}[], options?: {conflict: string}): Promise<any>;
+  save(data: {}, options?: {conflict: string}): Promise<this>;
+  save(data: {}[], options?: {conflict: string}): Promise<this>;  
+  /**
+   * This allows the usage of custom "defineStatic" functions in the model.
+   */
+  [fn: string]: (...args) => this | any;
+}
+
+interface IModelOptions {
+  /**
+   * Boolean, true to forbid missing fields, default "false".
+   */
+  enforce_missing: boolean;
+  /**
+   * Can be "strict", "remove" (delete the extra fields on validation), "none", default "none"
+   */
+  enforce_extra: string;
+  /**
+   * Can be "strict", "loose", "none", default "loose"
+   */
+  enforce_type: string;
+  /**
+   * Can be "onsave" or "oncreate". The default value is "onsave".
+   */
+  validate: string;
+  /**
+   * Can be "native" or "raw". The default value is "native".
+   */
+  timeFormat: any;
 }
