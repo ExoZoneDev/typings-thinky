@@ -13,7 +13,7 @@ export class Document {
    * Merge doc in the document
    * This is especially useful when you need to update a document with partial data before saving it.
    */
-  merge(document: any): Promise<Document>;
+  merge(document: Document): Promise<Document>;
   /**
    * Validate a document.
    * The method validate is called before saving a document.

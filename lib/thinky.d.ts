@@ -5,7 +5,7 @@ import {ThinkyErrors} from "./errors";
 import {Type} from "./type/index";
 
 interface ThinkyInstance {
-  (opts: ThinkyOpts): Thinky; 
+  (opts: ThinkyOpts): Thinky;
 }
 
 declare class Thinky {

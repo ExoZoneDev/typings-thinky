@@ -37,4 +37,8 @@ export class TypeString extends TypeAny {
    * The possible values for this string.
    */
   enum(values: string[]): this;
+  /**
+   * Requires the string to be a UUID.
+   */
+  uuid(version: number): this;
 }
